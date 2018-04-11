@@ -1,0 +1,40 @@
+<h5>{{ title }}</h5>
+<div class="row">
+  <form materialize class="col s12" [formGroup]="form" (ngSubmit)="save()">
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">room_service</i>
+        <input id="Nome" type="text" class="validate"
+               [(ngModel)]="prato.Nome" formControlName="Nome"
+               [class.invalid]="form.controls['Nome'].touched && !form.controls['Nome'].valid">
+        <label for="Nome"
+               [class.active]="prato.Nome"
+               data-error="Nome deve conter pelo menos 3 characteres">
+          Nome
+        </label>
+      </div>
+      <div class="input-field col s12">
+        <i class="material-icons prefix">local_offer</i>
+        <input id="Preco" type="text"
+               [(ngModel)]="prato.Preco" formControlName="Preco">
+        <label for="Preco"
+               [class.active]="prato.Preco">
+          Preço
+        </label>
+      </div>
+
+      <div *ngIf="restaurantes.length > 0" class="input-field col s12">
+        <div>
+          <h6>Restaurante</h6>
+        </div>
+
+        <select style="display:flex" class="validate" [(ngModel)]="prato.IdRestaurante" formControlName="IdRestaurante" id="IdRestaurante">
+          <option *ngFor="let restaurant of restaurantes" [ngValue]="restaurant.IdRestaurante">{{restaurant.Nome}}</option>
+        </select>
+
+      </div>
+
+    </div>
+    <button class="btn waves-effect waves-light" type="submit">Enviar</button>
+  </form>
+</div>

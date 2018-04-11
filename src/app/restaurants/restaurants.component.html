@@ -1,0 +1,54 @@
+<div class="row input-field col s10">
+  <input class="col s10" id="Pesquisa" type="text"
+         [(ngModel)]="pesquisa.Nome">
+  <label for="Pesquisa"
+         [class.active]="pesquisa.Nome">
+    Pesquisar
+  </label>
+  <div class="row input-field col s2">
+    <button (click)="buscaUser(pesquisa.Nome)">
+      <i class="material-icons">search</i>
+    </button>
+  </div>
+
+</div>
+<div  *ngIf="restaurants.length == 0">
+  <p>
+    Nenhum resultado encontrado para a pesquisa.
+  </p>
+</div>
+<div *ngIf="restaurants.length > 0">
+  <p>
+    Mostrando {{ restaurants.length }} restaurantes.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th data-field="name">Nome</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let restaurant of restaurants">
+        <td>{{ restaurant.Nome }}</td>
+        <td>
+          <a [routerLink]="['/restaurants', restaurant.IdRestaurante]">
+            <i class="material-icons">mode_edit</i>
+          </a>
+        </td>
+        <td>
+          <a (click)="deleteRestaurant(restaurant)" href="">
+            <i class="material-icons">delete</i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+  <a class="btn-floating btn-large waves-effect waves-light green"
+     routerLink="/restaurants/new">
+    <i class="material-icons">add</i>
+  </a>
+</div>

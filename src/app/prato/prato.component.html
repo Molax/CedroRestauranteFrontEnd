@@ -1,0 +1,56 @@
+<div class="row input-field col s10">
+  <input class="col s10" id="Pesquisa" type="text"
+         [(ngModel)]="pesquisa.Nome">
+  <label for="Pesquisa"
+         [class.active]="pesquisa.Nome">
+    Pesquisar
+  </label>
+  <div class="row input-field col s2">
+    <button (click)="buscaUser(pesquisa.Nome)">
+      <i class="material-icons">search</i>
+    </button>
+  </div>
+
+</div>
+<div  *ngIf="prato.length == 0">
+  <p>
+    Nenhum resultado encontrado para a pesquisa.
+  </p>
+</div>
+<div *ngIf="prato.length > 0">
+  <p>
+    Mostrando {{ prato.length }} pratos.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th data-field="name">Nome</th>
+        <th data-field="preco">Preço</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let prato of prato">
+        <td>{{ prato.Nome }}</td>
+        <td>{{ prato.Preco }}</td>
+        <td>
+          <a [routerLink]="['/prato', prato.IdPrato]">
+            <i class="material-icons">mode_edit</i>
+          </a>
+        </td>
+        <td>
+          <a (click)="deleteprato(prato)" href="">
+            <i class="material-icons">delete</i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+  <a class="btn-floating btn-large waves-effect waves-light green"
+     routerLink="/prato/new">
+    <i class="material-icons">add</i>
+  </a>
+</div>
