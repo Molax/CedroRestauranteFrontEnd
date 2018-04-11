@@ -5,12 +5,14 @@ import { Restaurant } from "../shared/restaurant";
 import { Prato } from '../shared/prato';
 import { PratoService } from '../shared/prato.service';
 import { BasicValidators } from '../../shared/basic-validators';
+import { CurrencyMaskModule } from "ng2-currency-mask";
 
 @Component({
   selector: 'app-prato-form',
   templateUrl: './prato-form.component.html',
   styleUrls: ['./prato-form.component.css']
 })
+
 export class PratoFormComponent implements OnInit {
 
   form: FormGroup;
@@ -37,6 +39,9 @@ export class PratoFormComponent implements OnInit {
       ]],
     });
   }
+
+
+
 
   ngOnInit() {
 
@@ -71,7 +76,6 @@ export class PratoFormComponent implements OnInit {
 
 
   save() {
-    debugger;
     console.log(this.restaurantes.length);
     var result,
       pratoValue = this.form.value;
@@ -92,5 +96,10 @@ export class PratoFormComponent implements OnInit {
     });
 
     result.subscribe(data => this.router.navigate(['prato']));
+  }
+
+  goToSearch() {
+
+    this.router.navigate(['prato']);
   }
 }

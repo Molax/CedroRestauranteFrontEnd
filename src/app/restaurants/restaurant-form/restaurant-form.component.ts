@@ -74,4 +74,9 @@ export class RestaurantFormComponent implements OnInit {
 
     result.subscribe(data => this.router.navigate(['restaurants']));
   }
+
+  goToSearch() {
+
+    this.router.navigate(['restaurants']);
+  }
 }

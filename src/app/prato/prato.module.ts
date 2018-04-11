@@ -5,7 +5,8 @@ import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
 import { pratoComponent } from './prato.component';
-import { PratoService } from './shared/prato.service'; 
+import { PratoService } from './shared/prato.service';
+import { CurrencyMaskModule } from "ng2-currency-mask";
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { PratoService } from './shared/prato.service';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    HttpModule
+    HttpModule,
+    CurrencyMaskModule
   ],
   declarations: [
     pratoComponent
